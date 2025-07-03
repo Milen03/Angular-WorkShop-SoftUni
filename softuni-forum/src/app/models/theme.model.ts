@@ -1,7 +1,9 @@
-import { Subsriber } from "."
 
 export interface Theme{
-    name:string
+    id:string
+    themeName:string
     userId:string
-    subscribers:Subsriber[]
+    username:string
+    subscribers:string[]
+    posts: string[]
 }
