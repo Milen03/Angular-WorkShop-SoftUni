@@ -1,10 +1,10 @@
-import { Data } from "@angular/router"
+
+import { User } from "./user.model"
 
 export interface Post{
     id:string
     text:string
-    userId:string
-    username:string
+    userId:User
     themeId:string
-    createdAt:Data
+    createdAt:Date
 }

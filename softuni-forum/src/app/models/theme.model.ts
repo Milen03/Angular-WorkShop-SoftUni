@@ -1,9 +1,10 @@
+import { User } from "./user.model"
 
 export interface Theme{
     id:string
     themeName:string
-    userId:string
-    username:string
+    userId:User
     subscribers:string[]
     posts: string[]
+    createdAt:Date
 }
