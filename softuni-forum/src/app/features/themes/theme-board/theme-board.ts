@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ThemesService } from '../../../core/services';
 
 @Component({
   selector: 'app-theme-board',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './theme-board.css'
 })
 export class ThemeBoard {
-
+constructor (private themesService:ThemesService ){}
 }
