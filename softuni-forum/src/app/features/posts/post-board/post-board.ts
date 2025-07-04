@@ -11,11 +11,11 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 })
 export class PostBoard implements OnInit {
   posts: Post[] = []
-constructor(private postsService:PostService ){}
+  constructor(private postsService: PostService) { }
 
-ngOnInit(): void {
-  this.postsService.getPosts().pipe(takeUntilDestroyed()).subscribe((posts)=>{
-    this.posts = posts
-  })
-}
+  ngOnInit(): void {
+    this.postsService.getPosts().pipe(takeUntilDestroyed()).subscribe((posts: Post[]) => {
+      this.posts = posts
+    })
+  }
 }

@@ -11,11 +11,11 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 })
 export class ThemeBoard implements OnInit {
   themes: Theme[] = []
-constructor (private themesService:ThemesService ){}
+  constructor(private themesService: ThemesService) { }
 
-ngOnInit(): void {
-  this.themesService.getThemes().pipe(takeUntilDestroyed()).subscribe((themes)=>{
-    this.themes = themes
-  })
-}
+  ngOnInit(): void {
+    this.themesService.getThemes().pipe(takeUntilDestroyed()).subscribe((themes: Theme[]) => {
+      this.themes = themes
+    })
+  }
 }
