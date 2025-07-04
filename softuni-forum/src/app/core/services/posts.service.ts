@@ -14,7 +14,7 @@ constructor(private httpClient:HttpClient){
 
 }
 
-getRecentPosts(limit:number = 5):Observable<Post[]>{
+getPosts(limit:number = 5):Observable<Post[]>{
         return this.httpClient.get<Post[]>(this.apiUrl.replace('{0}',limit.toString()))
     }
 }

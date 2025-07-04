@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemesService } from '../../../core/services';
 import { Theme } from '../../../models';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-theme-board',
@@ -9,10 +10,12 @@ import { Theme } from '../../../models';
   styleUrl: './theme-board.css'
 })
 export class ThemeBoard implements OnInit {
-  themems: Theme[] = []
+  themes: Theme[] = []
 constructor (private themesService:ThemesService ){}
 
 ngOnInit(): void {
-  
+  this.themesService.getThemes().pipe(takeUntilDestroyed()).subscribe((themes)=>{
+    this.themes = themes
+  })
 }
 }

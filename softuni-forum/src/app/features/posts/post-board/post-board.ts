@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../../core/services';
 import { Post } from '../../../models';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-post-board',
@@ -13,6 +14,8 @@ export class PostBoard implements OnInit {
 constructor(private postsService:PostService ){}
 
 ngOnInit(): void {
-  
+  this.postsService.getPosts().pipe(takeUntilDestroyed()).subscribe((posts)=>{
+    this.posts = posts
+  })
 }
 }
