@@ -3,10 +3,11 @@ import { ThemesService } from '../../../core/services';
 import { Theme } from '../../../models';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ThemeItem } from "../theme-item/theme-item";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-theme-board',
-  imports: [ThemeItem],
+  imports: [ThemeItem,CommonModule],
   templateUrl: './theme-board.html',
   styleUrl: './theme-board.css'
 })
