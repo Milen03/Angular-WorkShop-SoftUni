@@ -1,7 +1,5 @@
 <div class="theme-title">
-    <app-theme-item 
-    *ngfor="let theme of themes" 
-    [theme]="theme">
+    <app-theme-item *ngFor="let theme of themes$ | async" [theme]="theme">
     </app-theme-item>
 </div>
 <!-- theme component  -->

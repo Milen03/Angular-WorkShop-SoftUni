@@ -1,24 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { PostService } from '../../../core/services';
 import { Post } from '../../../models';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-
+import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { PostItem } from '../post-item/post-item';
 
 @Component({
   selector: 'app-post-board',
-  imports: [PostItem,CommonModule],
+  standalone: true,
+  imports: [PostItem, CommonModule],
   templateUrl: './post-board.html',
   styleUrl: './post-board.css'
 })
-export class PostBoard implements OnInit {
-  posts: Post[] = []
-  constructor(private postsService: PostService) { }
+export class PostBoard {
+  readonly posts$: Observable<Post[]>;
 
-  ngOnInit(): void {
-    this.postsService.getPosts().pipe(takeUntilDestroyed()).subscribe((posts: Post[]) => {
-      this.posts = posts
-    })
+  constructor(private postsService: PostService) {
+    this.posts$ = this.postsService.getPosts().pipe(
+      takeUntilDestroyed()
+    );
   }
 }
