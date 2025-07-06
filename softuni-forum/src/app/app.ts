@@ -12,5 +12,4 @@ import { PostBoard } from "./features/posts/post-board/post-board";
   styleUrl: './app.css'
 })
 export class App {
-  protected title = 'softuni-forum';
 }
