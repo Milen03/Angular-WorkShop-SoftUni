@@ -6,5 +6,5 @@ export interface Post{
     text:string
     userId:User
     themeId:string
-    createdAt:Date
+    created_at:Date
 }
