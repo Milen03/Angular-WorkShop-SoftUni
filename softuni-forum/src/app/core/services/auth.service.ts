@@ -9,12 +9,26 @@ export class AuthService {
 
     private _isLoggeIn = signal<boolean>(false)
     private _currentUser = signal<User | null>(null)
-    private _users: User[] = [
-        { id: '5fa64b162183ce1728ff371d', username: 'Johny' },
-        { id: '5fa64a072183ce1728ff3719', username: 'David' },
-        { id: '5fa64b972183ce1728ff3720', username: 'Donald' }
+     private _users: User[] = [
+        {
+            id: '5fa64b162183ce1728ff371d', 
+            username: 'John', 
+            email: 'john.doe@gmail.com',
+            phone: '+359 885 888 888'
+        },
+        {
+            id: '5fa64b162183ce1728ff371e', 
+            username: 'Jane',
+            email: 'john.doe@gmail.com',
+            phone: '+359 885 888 888'
+        },
+        {
+            id: '5fa64b162183ce1728ff371f', 
+            username: 'David',
+            email: 'john.doe@gmail.com',
+            phone: '+359 885 888 888'
+        }
     ]
-
     public isLoggedIn = this._isLoggeIn.asReadonly()
     public currentUser = this._currentUser.asReadonly()
 
@@ -47,11 +61,13 @@ export class AuthService {
         , password: string,
         phone: string,
         rePasword: string): boolean {
-        if (username && email && password && phone && rePasword ) {
+       if(username && email && phone && password && rePasword) {
             const newUser: User = {
                 id: `user_${Date.now()}`,
-                username: username
-            }
+                username: username,
+                email: email,
+                phone: phone
+            };
 
             this._users.push(newUser)
             this._currentUser.set(newUser)

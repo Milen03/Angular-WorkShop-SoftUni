@@ -16,8 +16,16 @@ export const routes: Routes = [
         path:'login',
         loadComponent: () => import('./features/auth/login/login').then(c => c.Login)
     },
- {
+    {
+        path: 'themes',
+        loadComponent: () => import('./features/themes/theme-board/theme-board').then(c => c.ThemeBoard)
+    },
+    {
         path: 'register',
         loadComponent: () => import('./features/auth/register/register').then(c => c.Register)
     },
+    {
+        path: 'profile',
+        loadComponent: () => import('./features/profile/profile').then(c => c.Profile)
+    }
 ];
