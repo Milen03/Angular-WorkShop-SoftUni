@@ -66,10 +66,10 @@ export class AuthService {
 
     }
 
-    logout(): void {
-        this._currentUser.set(null)
-        this._currentUser.set(null)
-        localStorage.removeItem('currentUser')
+ logout(): void {
+        this._currentUser.set(null);
+        this._isLoggeIn.set(false);
+        localStorage.removeItem('currentUser');
     }
 
     getCurrentUserId():string | null{
