@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Post } from '../../../models';
 
 @Component({
@@ -9,4 +9,5 @@ import { Post } from '../../../models';
 })
 export class PostItem {
  @Input() post!:Post
+ @Output() postChangedEvent = new EventEmitter<Post>();
 }
