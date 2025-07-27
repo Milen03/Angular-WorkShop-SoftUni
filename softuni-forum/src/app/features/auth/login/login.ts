@@ -18,7 +18,7 @@ export class Login implements AfterViewInit {
 
   constructor() {
     this.loginForm = this.fornmBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, customEmailValidator]],
       password: ['', [Validators.required, Validators.minLength(5)]]
     })
   }
@@ -49,7 +49,7 @@ export class Login implements AfterViewInit {
       return 'Email is required!'
     }
 
-    if (this.email?.errors?.['email']) {
+    if (this.email?.errors?.['emailValidator']) {
       return 'Email is not valid'
     }
 
@@ -92,7 +92,7 @@ export class Login implements AfterViewInit {
 
   
 }
-export function emailValidator(emailControl: AbstractControl): ValidationErrors | null {
+export function customEmailValidator(emailControl: AbstractControl): ValidationErrors | null {
   const emailRegex = /^(?=.{6,})[a-zA-Z][a-zA-Z0-9._-]*@gmail\.(com|bg)$/;
 
   const email = emailControl.value;
