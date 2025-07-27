@@ -12,9 +12,7 @@ import { AuthService } from '../../../core/services';
 export class Register {
   private authSevice = inject(AuthService)
   private router = inject(Router)
-
-
-  private formBuilder = inject(FormBuilder);
+  private formBuilder = inject(FormBuilder)
 
   registerForm: FormGroup;
 
