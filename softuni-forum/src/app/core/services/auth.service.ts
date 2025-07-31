@@ -98,15 +98,7 @@ export class AuthService {
                 localStorage.setItem('currentUser', JSON.stringify(user))
             })
         )
-        const userIndex = this._users.findIndex(u => u.id === user.id);
-
-        if (userIndex !== -1) {
-            this._users[userIndex] = user;
-        }
-
-        this._currentUser.set(user);
-
-        localStorage.setItem('currentUser', JSON.stringify(user));
+        
     }
 
     private mapApiUserToUser(apiUser: ApiUser): User {
