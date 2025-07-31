@@ -66,10 +66,17 @@ export class AuthService {
 
     }
 
-    logout(): void {
-        this._currentUser.set(null);
-        this._isLoggeIn.set(false);
-        localStorage.removeItem('currentUser');
+    logout(): Observable<void> {
+        return this.httpClient.post<void>(`${this.apiUrl}/logout`, {}, {
+            withCredentials: true
+        }).pipe(
+            tap(() => {
+                this._currentUser.set(null),
+                this._isLoggeIn.set(false)
+
+                localStorage.removeItem('currentUser')
+            })
+        )
     }
 
     getCurrentUserId(): string | null {
