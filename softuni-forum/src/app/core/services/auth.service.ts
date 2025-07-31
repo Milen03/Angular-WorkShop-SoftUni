@@ -77,14 +77,12 @@ export class AuthService {
     }
 
     update(user: User): Observable<User> {
-        const apiUser = <ApiUser>{
+        return this.httpClient.put<ApiUser>(`${this.apiUrl}/users/${user.id}`, {
             _id: user.id,
             username: user.username,
             email: user.email,
             tel: user.phone
-        }
-
-        return this.httpClient.put<ApiUser>(`${this.apiUrl}/users/${user.id}`, apiUser {
+        }, {
             withCredentials: true
         }).pipe(map(apiUser => this.mapApiUserToUser(apiUser)),
             tap(user => {
