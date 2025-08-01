@@ -135,18 +135,22 @@ export class Register {
 
       console.log(username);
 
-      const response = this.authSevice.register(
+      this.authSevice.register(
         username,
         email,
         phone,
         password,
-        rePassword);
-
-      if (response === true) {
+        rePassword).subscribe({
+          next: () => {
         this.router.navigate(['/home']);
-      } else {
-        this.markFormGroupTouched();
-      }
+
+          } ,
+          error:(err) =>{
+            console.log(`Registracion failed`,err);
+                    this.markFormGroupTouched();
+          }
+        })
+
     }
   }
 

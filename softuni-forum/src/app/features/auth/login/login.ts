@@ -73,13 +73,17 @@ export class Login implements AfterViewInit {
  
     if (this.loginForm.valid) {
       const {email,password} = this.loginForm.value
-      const response = this.authService.login(email,password)
+      this.authService.login(email,password).subscribe({
+        next: () =>{
+          this.router.navigate(['/home'])
+        },
+          error:(err) =>{
+            console.log(`login failed`,err);
+                    this.markFormGroupTouched();
+          }
+        
+      })
 
-      if (response === true) {
-        this.router.navigate(['/home'])
-      } else {
-          this.markFormGroupTouched()
-      }
     }
   }
 

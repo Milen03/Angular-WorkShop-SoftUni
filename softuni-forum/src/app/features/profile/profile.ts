@@ -85,21 +85,26 @@ isEditMode: boolean = false
     this.profileForm.reset();
   }
 
+ 
   onSave(): void {
-    if (this.profileForm.valid) {
-      const { username, email, phone } = this.profileForm.value
+  if (this.profileForm.valid) {
+    const { username, email, phone } = this.profileForm.value;
 
-      const user = <User>{
-        username: username,
-        email: email,
-        phone: phone
-      };
+    const user = <User>{
+      username,
+      email,
+      phone
+    };
 
-      this.authService.update(user);
-
+    this.authService.update(user).subscribe(updatedUser => {
+      this.authService.setCurrentUser(updatedUser);
       this.isEditMode = false;
       this.profileForm.reset();
-    }
+    });
   }
+}
 
 }
+
+
+

@@ -41,8 +41,8 @@ export class AuthService {
     register(
         username: string,
         email: string,
-        password: string,
         phone: string,
+        password: string,
         rePasword: string
     ): Observable<User> {
         return this.httpClient.post<ApiUser>(`${this.apiUrl}/register`, {
@@ -84,7 +84,7 @@ export class AuthService {
     }
 
     update(user: User): Observable<User> {
-        return this.httpClient.put<ApiUser>(`${this.apiUrl}/users/${user.id}`, {
+        return this.httpClient.put<ApiUser>(`${this.apiUrl}/users/profile`, {
             _id: user.id,
             username: user.username,
             email: user.email,
@@ -109,4 +109,10 @@ export class AuthService {
             phone: apiUser.tel
         }
     }
+
+   setCurrentUser(user: User) {
+  this._currentUser.set(user); // Ако е signal
+  // или this._currentUser.next(user); // Ако е BehaviorSubject
+}
+
 }
